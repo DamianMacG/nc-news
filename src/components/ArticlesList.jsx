@@ -18,7 +18,7 @@ const ArticleList = () => {
   }, []);
 
   if (isError) {
-    return <p>Error!!!</p>;
+    return <p>Failed to load Articles</p>;
   } else if (isLoading) {
     return <p>Loading...</p>;
   } else
