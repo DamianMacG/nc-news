@@ -1,21 +1,13 @@
-import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+// import { Routes, Route } from "react-router-dom";
+// import Navbar from "./components/Navbar";
+// import Home from "../Pages/Home";
 import "./App.css";
-// import { useContext } from "react";
+import ArticleList from "./components/ArticlesList";
 
 function App() {
-
-  
-  
-  
   return (
     <div className="app">
-      <Navbar />
-      <h1 className="heading">DG NEWS</h1>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/users" element={<Users />} />
-      </Routes>
+   <ArticleList />
     </div>
   );
 }
