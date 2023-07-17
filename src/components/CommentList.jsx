@@ -4,10 +4,11 @@ import CommentCard from "./CommentCard";
 
 const CommentList = ({ article_id }) => {
   const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true)
     getCommentsByArticleId(article_id)
       .then((data) => {
         setComments(data);
@@ -23,6 +24,10 @@ const CommentList = ({ article_id }) => {
     return <p>Failed to load comments</p>;
   } else if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (comments.length === 0) {
+    return <p>No comments yet</p>;
   }
 
   return (
