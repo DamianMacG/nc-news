@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../src/components/utils/utils";
 import ArticlePageCard from "../src/components/ArticlePageCard";
+import CommentList from "../src/components/CommentList";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -29,6 +30,7 @@ const ArticlePage = () => {
   return (
     <main className="article-page">
       <ArticlePageCard article={article} />
+      <CommentList article_id={article.article_id}/>
     </main>
   );
 };

@@ -22,3 +22,15 @@ export const getArticleById = (article_id) => {
     return response.data.article;
   });
 };
+
+export const getCommentsByArticleId = (article_id, limit = 20) => {
+  return api
+    .get(`/articles/${article_id}/comments`, {
+      params: {
+        limit,
+      },
+    })
+    .then((response) => {
+      return response.data.comments;
+    })
+  }
