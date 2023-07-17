@@ -34,3 +34,10 @@ export const getCommentsByArticleId = (article_id, limit = 20) => {
       return response.data.comments;
     })
   }
+
+  export const patchArticle = (articleId) => {
+    return api.patch(`/articles/${articleId}`, { inc_votes: 10 })
+      .then((response) => {
+        return response.data.article;
+      });
+  };
