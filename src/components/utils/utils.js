@@ -16,3 +16,9 @@ export const getArticles = (limit = 40, page = 1) => {
       return response.data.articles;
     });
 };
+
+export const getArticleById = (article_id) => {
+  return api.get(`/articles/${article_id}`).then((response) => {
+    return response.data.article;
+  });
+};
