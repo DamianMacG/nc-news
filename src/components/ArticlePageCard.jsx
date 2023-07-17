@@ -5,7 +5,6 @@ const ArticlePageCard = ({ article }) => {
 
   return (
     <>
-    <h1>Article by ID</h1>
     <section className="article-page-card">
       <h2>{article.title}</h2>
       <p>Topic: {article.topic}</p>
