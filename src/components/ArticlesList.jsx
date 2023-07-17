@@ -23,12 +23,12 @@ const ArticleList = () => {
     return <p>Loading...</p>;
   } else
     return (
-      <div className="item-list">
+      <main className="article-list">
         <h2>ARTICLE LIST</h2>
         {articles.map((article) => (
           <ArticleListCard key={article.article_id} article={article}></ArticleListCard>
         ))}
-      </div>
+      </main>
     );
 };
 

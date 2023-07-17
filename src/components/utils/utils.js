@@ -13,7 +13,6 @@ export const getArticles = (limit = 40, page = 1) => {
       },
     })
     .then((response) => {
-      console.log(response.data.articles);
       return response.data.articles;
     });
 };
