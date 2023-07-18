@@ -53,6 +53,8 @@ ul {
   max-width: 600px;
   text-align: center;
   max-height: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .comment-form {
@@ -64,8 +66,8 @@ ul {
   padding: 30px;
   max-width: 500px;
   margin: 0 auto;
+  
 }
-
 
 .comment-form textarea {
   padding: 10px;
@@ -75,7 +77,8 @@ ul {
   width: 100%;
   box-sizing: border-box;
   height: 100px;
-  resize: vertical;
+  resize: none; /* Prevents resizing */
+  
 }
 
 .comment-form label {

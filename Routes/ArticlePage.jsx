@@ -5,6 +5,7 @@ import ArticlePageCard from "../src/components/ArticlePageCard";
 import CommentList from "../src/components/CommentList";
 import { patchArticle } from "../src/components/utils/utils";
 import AddComment from "../src/components/AddComment";
+import "../src/App.css"
 
 const ArticlePage = () => {
   const { article_id } = useParams();

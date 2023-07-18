@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "./utils/utils";
 import CommentCard from "./CommentCard";
+import "../../src/App.css";
 
 const CommentList = ({ article_id, comments, setComments, isCommentPosted }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +35,7 @@ const CommentList = ({ article_id, comments, setComments, isCommentPosted }) => 
       <h2>Comments:</h2>
       {isCommentPosted && <p>Comment posted successfully!</p>}
       {comments.map((comment) => (
-        <CommentCard key={comment.comment_id} comment={comment} />
+        <CommentCard key={comment.comment_id} comment={comment} isCommentPosted={isCommentPosted}/>
       ))}
     </div>
   );
