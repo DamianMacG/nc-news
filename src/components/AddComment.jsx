@@ -1,33 +1,33 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { postComment } from "./utils/utils";
 import "../../src/App.css";
 
-const AddComment = ({
-  onSubmit,
-  handleSubmitError,
-  isCommentPosted,
-  setIsCommentPosted,
-}) => {
+const AddComment = ({ article_id, setComments }) => {
   const [comment, setComment] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isCommentPosted, setIsCommentPosted] = useState(false);
+  const [handleSubmitError, setHandleSubmitError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isCommentPosted && !isSubmitting) {
       setIsSubmitting(true);
-      onSubmit(comment)
-        .then(() => {
+      setHandleSubmitError(false);
+      postComment(article_id, comment)
+        .then((newComment) => {
           setIsCommentPosted(true);
           setComment("");
+          setComments((prevComments) => [newComment, ...prevComments]);
         })
         .catch((err) => {
           setHandleSubmitError(true);
         })
         .finally(() => {
           setIsSubmitting(false);
+          setIsCommentPosted(false);
         });
     }
   };
-
   return (
     <form onSubmit={handleSubmit} className="comment-form">
       <h2>Post a comment:</h2>

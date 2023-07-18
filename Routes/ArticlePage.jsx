@@ -5,7 +5,6 @@ import ArticlePageCard from "../src/components/ArticlePageCard";
 import CommentList from "../src/components/CommentList";
 import { patchArticle } from "../src/components/utils/utils";
 import AddComment from "../src/components/AddComment";
-import { postComment } from "../src/components/utils/utils";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -15,8 +14,6 @@ const ArticlePage = () => {
   const [currentVoteCount, setCurrentVoteCount] = useState(0);
   const [voteError, setVoteError] = useState(false);
   const [comments, setComments] = useState([]);
-  const [isCommentPosted, setIsCommentPosted] = useState(false);
-  const [handleSubmitError, setHandleSubmitError] = useState(false);
 
   const handleVoteUp = () => {
     setCurrentVoteCount((prevCount) => prevCount + 1);
@@ -41,20 +38,6 @@ const ArticlePage = () => {
       .catch((err) => {
         setVoteError(true);
         setCurrentVoteCount((prevCount) => prevCount + 1);
-      });
-  };
-
-  const handleSubmitComment = (comment) => {
-    setHandleSubmitError(false);
-    return postComment(article_id, comment)
-      .then(() => {
-        setIsCommentPosted(true);
-      })
-      .catch((err) => {
-        setHandleSubmitError(true);
-      })
-      .finally(() => {
-        setIsCommentPosted(false);
       });
   };
 
@@ -84,17 +67,11 @@ const ArticlePage = () => {
         currentVoteCount={currentVoteCount}
         voteError={voteError}
       />
-      <AddComment
-        onSubmit={handleSubmitComment}
-        handleSubmitError={handleSubmitError}
-        isCommentPosted={isCommentPosted}
-        setIsCommentPosted={setIsCommentPosted}
-      />
+      <AddComment article_id={article_id} setComments={setComments}/>
       <CommentList
         article_id={article.article_id}
         comments={comments}
         setComments={setComments}
-        isCommentPosted={isCommentPosted}
       />
     </main>
   );
