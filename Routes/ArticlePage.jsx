@@ -4,6 +4,8 @@ import { getArticleById } from "../src/components/utils/utils";
 import ArticlePageCard from "../src/components/ArticlePageCard";
 import CommentList from "../src/components/CommentList";
 import { patchArticle } from "../src/components/utils/utils";
+import AddComment from "../src/components/AddComment";
+import "../src/App.css"
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -12,6 +14,7 @@ const ArticlePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentVoteCount, setCurrentVoteCount] = useState(0);
   const [voteError, setVoteError] = useState(false);
+  const [comments, setComments] = useState([]);
 
   const handleVoteUp = () => {
     setCurrentVoteCount((prevCount) => prevCount + 1);
@@ -65,7 +68,12 @@ const ArticlePage = () => {
         currentVoteCount={currentVoteCount}
         voteError={voteError}
       />
-      <CommentList article_id={article.article_id} />
+      <AddComment article_id={article_id} setComments={setComments}/>
+      <CommentList
+        article_id={article.article_id}
+        comments={comments}
+        setComments={setComments}
+      />
     </main>
   );
 };

@@ -42,3 +42,20 @@ export const patchArticle = (articleId, votes) => {
       return response.data.article;
     });
 };
+
+export const postComment = (article_id, comment) => {
+  const requestData = {
+    username: "grumpy19",
+    body: comment,
+  };
+
+  return api
+    .post(`/articles/${article_id}/comments`, requestData)
+    .then((response) => {
+      return response.data.comment;
+    })
+    .catch((error) => {
+      console.error("Failed to post comment:", error.response);
+      throw error;
+    });
+};
