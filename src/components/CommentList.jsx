@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "./utils/utils";
 import CommentCard from "./CommentCard";
 
-const CommentList = ({ article_id, comments, setComments, isCommentPosted }) => {
-  // const [comments, setComments] = useState([]);
+const CommentList = ({
+  article_id,
+  comments,
+  setComments,
+  isCommentPosted,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
- 
 
   useEffect(() => {
     setIsLoading(true);
@@ -21,9 +24,7 @@ const CommentList = ({ article_id, comments, setComments, isCommentPosted }) => 
       });
   }, [article_id, isCommentPosted]);
 
-  useEffect(() => {
-
-  }, [comments])
+  useEffect(() => {}, [comments]);
 
   if (isError) {
     return <p>Failed to load comments</p>;
@@ -38,6 +39,7 @@ const CommentList = ({ article_id, comments, setComments, isCommentPosted }) => 
   return (
     <div className="comment-list">
       <h2>Comments:</h2>
+      {isCommentPosted && <p>Comment posted successfully!</p>}
       {comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />
       ))}
