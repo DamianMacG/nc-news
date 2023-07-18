@@ -12,6 +12,7 @@ const AddComment = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="comment-form">
+        <h2>Post a comment:</h2>
       <textarea
       name="comment"
         value={comment}

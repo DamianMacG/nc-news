@@ -15,6 +15,7 @@ const ArticlePage = () => {
   const [currentVoteCount, setCurrentVoteCount] = useState(0);
   const [voteError, setVoteError] = useState(false);
   const [comments, setComments] = useState([]);
+   const [isCommentPosted, setIsCommentPosted] = useState(false)
 
   const handleVoteUp = () => {
     setCurrentVoteCount((prevCount) => prevCount + 1);
@@ -45,7 +46,8 @@ const ArticlePage = () => {
   const handleSubmitComment = (comment) => {
     postComment(article_id, comment)
       .then((newComment) => {
-        setComments((prevComments) => [...prevComments, newComment]);
+        setIsCommentPosted(true)
+        // setComments((prevComments) => [...prevComments, newComment]);
       })
       .catch((err) => {
         console.log("HANDLE SUBMIT ERROR")
@@ -79,7 +81,7 @@ const ArticlePage = () => {
         voteError={voteError}
       />
       <AddComment onSubmit={handleSubmitComment} />
-      <CommentList article_id={article.article_id} comments={comments} />
+      <CommentList article_id={article.article_id} comments={comments} setComments={setComments} isCommentPosted={isCommentPosted} />
     </main>
   );
 };
