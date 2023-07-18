@@ -8,7 +8,7 @@ const CommentList = ({ article_id }) => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     getCommentsByArticleId(article_id)
       .then((data) => {
         setComments(data);
@@ -32,7 +32,7 @@ const CommentList = ({ article_id }) => {
 
   return (
     <div className="comment-list">
-        <h2>Comments:</h2>
+      <h2>Comments:</h2>
       {comments.map((comment) => (
         <CommentCard key={comment.comment_id} comment={comment} />
       ))}
