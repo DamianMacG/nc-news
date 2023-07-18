@@ -15,6 +15,7 @@ const ArticlePage = () => {
 
   const handleVoteUp = () => {
     setCurrentVoteCount((prevCount) => prevCount + 1);
+    setVoteError(false);
     patchArticle(article_id, 1)
       .then((updatedArticle) => {
         setCurrentVoteCount(updatedArticle.votes);
@@ -27,6 +28,7 @@ const ArticlePage = () => {
 
   const handleVoteDown = () => {
     setCurrentVoteCount((prevCount) => prevCount - 1);
+    setVoteError(false);
     patchArticle(article_id, -1)
       .then((updatedArticle) => {
         setCurrentVoteCount(updatedArticle.votes);

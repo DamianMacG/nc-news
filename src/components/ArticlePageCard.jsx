@@ -20,8 +20,8 @@ const ArticlePageCard = ({
         <p>{article.body}</p>
         <p>Comment Count: {article.comment_count}</p>
         <p>Votes: {currentVoteCount}</p>
-        <button onClick={handleVoteUp}>Like</button>
-        <button onClick={handleVoteDown}>Dislike</button>
+        <button onClick={handleVoteUp}>Up Vote</button>
+        <button onClick={handleVoteDown}>Down Vote</button>
         {voteError && <p>Unable to vote at this moment</p>}
       </section>
     </>
