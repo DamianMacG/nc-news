@@ -6,6 +6,8 @@ const ArticleList = () => {
   const [articles, setArticles] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
+
   useEffect(() => {
     getArticles()
       .then((data) => {

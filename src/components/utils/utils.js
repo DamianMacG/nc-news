@@ -32,5 +32,13 @@ export const getCommentsByArticleId = (article_id, limit = 20) => {
     })
     .then((response) => {
       return response.data.comments;
-    })
-  }
+    });
+};
+
+export const patchArticle = (articleId, votes) => {
+  return api
+    .patch(`/articles/${articleId}`, { inc_votes: votes })
+    .then((response) => {
+      return response.data.article;
+    });
+};
