@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "./utils/utils";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const TopicSearch = ({ onChange }) => {
   const [topics, setTopics] = useState([]);
@@ -9,6 +9,7 @@ const TopicSearch = ({ onChange }) => {
   const [isError, setIsError] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,6 +25,12 @@ const TopicSearch = ({ onChange }) => {
         setIsLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const topicFromQuery = queryParams.get("topic");
+    setSelectedTopic(topicFromQuery || "");
+  }, [location]);
 
   const handleChange = (e) => {
     const selectedTopic = e.target.value;

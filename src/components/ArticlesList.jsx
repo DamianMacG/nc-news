@@ -1,20 +1,21 @@
+import { useState, useEffect } from "react";
 import ArticleListCard from "./ArticleListCard";
 import { getArticles } from "./utils/utils";
-import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import TopicSearch from "./TopicSearch";
 
 const ArticleList = () => {
-  const [articles, setArticles] = useState("");
+  const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState("");
-  
-  
-  const handleTopicChange = (selectedTopic) => {
-    setSelectedTopic(selectedTopic);
-  };
+
+  const location = useLocation();
 
   useEffect(() => {
+    setIsLoading(true);
+    setIsError(false);
+
     getArticles()
       .then((data) => {
         setArticles(data);
@@ -25,9 +26,19 @@ const ArticleList = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const topicFromQuery = queryParams.get("topic");
+    setSelectedTopic(topicFromQuery || "");
+  }, [location]);
+
+  const handleTopicChange = (selectedTopic) => {
+    setSelectedTopic(selectedTopic);
+  };
+
   const filteredArticles = selectedTopic
-  ? articles.filter((article) => article.topic === selectedTopic)
-  : articles;
+    ? articles.filter((article) => article.topic === selectedTopic)
+    : articles;
 
   if (isError) {
     return <p>Failed to load Articles</p>;
