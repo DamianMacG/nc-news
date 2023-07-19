@@ -15,6 +15,7 @@ const ArticlePage = () => {
   const [currentVoteCount, setCurrentVoteCount] = useState(0);
   const [voteError, setVoteError] = useState(false);
   const [comments, setComments] = useState([]);
+  
 
   const handleVoteUp = () => {
     setCurrentVoteCount((prevCount) => prevCount + 1);
@@ -42,6 +43,8 @@ const ArticlePage = () => {
       });
   };
 
+  
+
   useEffect(() => {
     getArticleById(article_id)
       .then((data) => {
@@ -68,14 +71,14 @@ const ArticlePage = () => {
         currentVoteCount={currentVoteCount}
         voteError={voteError}
       />
-      <AddComment article_id={article_id} setComments={setComments}/>
+      <AddComment article_id={article_id} setComments={setComments} />
       <CommentList
         article_id={article.article_id}
         comments={comments}
         setComments={setComments}
       />
+      
     </main>
   );
 };
-
 export default ArticlePage;

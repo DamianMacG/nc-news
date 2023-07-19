@@ -59,3 +59,9 @@ export const postComment = (article_id, comment) => {
       throw error;
     });
 };
+
+export const getTopics = () => {
+  return api.get(`/topics`).then((response) => {
+    return response.data.topics;
+  });
+};
