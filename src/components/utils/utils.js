@@ -65,3 +65,15 @@ export const getTopics = () => {
     return response.data.topics;
   });
 };
+
+export const getArticlesByTopic = (topic) => {
+  return api
+    .get("/articles", {
+      params: {
+        topic,
+      },
+    })
+    .then((response) => {
+      return response.data.articles;
+    });
+};
