@@ -3,6 +3,7 @@ import Home from "../Routes/Home";
 import ArticlePage from "../Routes/ArticlePage";
 import Navbar from "./components/Navbar";
 import Error from "./components/ErrorPage";
+import WelcomePage from "../Routes/WelcomePage";
 import "./App.css";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="app">
       <Navbar />
       <Routes>
+        <Route path="/" element={<WelcomePage />}/>
         <Route path="/articles" element={<Home />} />
         <Route path="/articles/:article_id" element={<ArticlePage />} />
         <Route
