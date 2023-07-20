@@ -12,18 +12,22 @@ const CommentList = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [deleteError, setDeleteError] = useState(false);
+  const [isDeletingComment, setIsDeletingComment] = useState(false);
 
   const loggedInUserId = "grumpy19";
 
   const handleDeleteComment = (comment_id) => {
+    setIsDeletingComment(true);
     deleteComment(comment_id)
       .then(() => {
         setComments((prevComments) =>
           prevComments.filter((comment) => comment.comment_id !== comment_id)
         );
+        setIsDeletingComment(false);
       })
       .catch((err) => {
         setDeleteError(true);
+        setIsDeletingComment(false);
       });
   };
 
@@ -63,6 +67,7 @@ const CommentList = ({
           isCommentPosted={isCommentPosted}
           onDeleteComment={handleDeleteComment}
           loggedInUserId={loggedInUserId}
+          isDeleting={isDeletingComment}
         />
       ))}
     </div>

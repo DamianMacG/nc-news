@@ -1,6 +1,6 @@
 import "../../src/App.css";
 
-const CommentCard = ({ comment, onDeleteComment, isCommentPosted, loggedInUserId }) => {
+const CommentCard = ({ comment, onDeleteComment, isCommentPosted, loggedInUserId, isDeleting }) => {
   const formattedDate = new Date(comment.created_at).toLocaleString();
 
   const handleDelete = () => {
@@ -14,7 +14,7 @@ const CommentCard = ({ comment, onDeleteComment, isCommentPosted, loggedInUserId
         Posted by {comment.author} on {formattedDate}
       </p>
       {comment.author === loggedInUserId && (
-        <button onClick={handleDelete} disabled={isCommentPosted}>
+        <button onClick={handleDelete} disabled={isCommentPosted || isDeleting}>
           Delete
         </button>
       )}
