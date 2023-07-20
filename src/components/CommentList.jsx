@@ -1,11 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { getCommentsByArticleId } from "./utils/utils";
+import { getCommentsByArticleId, deleteComment } from "./utils/utils";
 import CommentCard from "./CommentCard";
 import "../../src/App.css";
 
-const CommentList = ({ article_id, comments, setComments, isCommentPosted }) => {
+const CommentList = ({
+  article_id,
+  comments,
+  setComments,
+  isCommentPosted,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const loggedInUserId = "grumpy19";
+
+  const handleDeleteComment = (comment_id) => {
+    deleteComment(comment_id)
+      .then(() => {
+        setComments((prevComments) =>
+          prevComments.filter((comment) => comment.comment_id !== comment_id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error deleting comment:", error);
+      });
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,7 +54,13 @@ const CommentList = ({ article_id, comments, setComments, isCommentPosted }) => 
       <h2>Comments:</h2>
       {isCommentPosted && <p>Comment posted successfully!</p>}
       {comments.map((comment) => (
-        <CommentCard key={comment.comment_id} comment={comment} isCommentPosted={isCommentPosted}/>
+        <CommentCard
+          key={comment.comment_id}
+          comment={comment}
+          isCommentPosted={isCommentPosted}
+          onDeleteComment={handleDeleteComment}
+          loggedInUserId={loggedInUserId}
+        />
       ))}
     </div>
   );
