@@ -11,6 +11,7 @@ const CommentList = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [deleteError, setDeleteError] = useState(false);
 
   const loggedInUserId = "grumpy19";
 
@@ -21,8 +22,8 @@ const CommentList = ({
           prevComments.filter((comment) => comment.comment_id !== comment_id)
         );
       })
-      .catch((error) => {
-        console.error("Error deleting comment:", error);
+      .catch((err) => {
+        setDeleteError(true);
       });
   };
 
@@ -43,6 +44,8 @@ const CommentList = ({
     return <p>Failed to load comments</p>;
   } else if (isLoading) {
     return <p>Loading...</p>;
+  } else if (deleteError) {
+    return <p>Cannot delete at this time</p>;
   }
 
   if (comments.length === 0) {
