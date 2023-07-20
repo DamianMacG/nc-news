@@ -24,6 +24,7 @@ const ArticleList = () => {
       })
       .catch((err) => {
         setIsError(true);
+        setIsLoading(false);
       });
   }, []);
 
@@ -42,10 +43,12 @@ const ArticleList = () => {
     : articles;
 
   if (isError) {
-    return <Error
+    return (
+      <Error
         errorStatus={404}
         errorMessage={"Articles not found: The requested articles do not exist"}
       />
+    );
   } else if (isLoading) {
     return <p>Loading...</p>;
   } else
@@ -54,7 +57,10 @@ const ArticleList = () => {
         <h2>ARTICLE LIST</h2>
         <TopicSearch onChange={handleTopicChange} />
         {filteredArticles.map((article) => (
-          <ArticleListCard key={article.article_id} article={article}></ArticleListCard>
+          <ArticleListCard
+            key={article.article_id}
+            article={article}
+          ></ArticleListCard>
         ))}
       </main>
     );
