@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "./utils/utils";
 import { useNavigate, useLocation } from "react-router-dom";
+import Error from "./ErrorPage";
 
 const TopicSearch = ({ onChange }) => {
   const [topics, setTopics] = useState([]);
@@ -44,7 +45,10 @@ const TopicSearch = ({ onChange }) => {
   }
 
   if (isError) {
-    return <p>Error occurred while fetching topics.</p>;
+    return <Error
+    errorStatus={404}
+    errorMessage={"Topic not found: it seems this Topic does not exist yet!"}
+  />
   }
 
   return (

@@ -29,6 +29,8 @@ const AddComment = ({ article_id, setComments }) => {
     }
   };
   return (
+    <>
+    {handleSubmitError && <ErrorPage errorStatus={500} errorMessage="Unable to post the comment. Please try again later." />}
     <form onSubmit={handleSubmit} className="comment-form">
       <h2>Post a comment:</h2>
       <textarea
@@ -41,8 +43,8 @@ const AddComment = ({ article_id, setComments }) => {
       <button type="submit" disabled={isCommentPosted || isSubmitting}>
         {isSubmitting ? "Submitting..." : "Submit"}
       </button>
-      {handleSubmitError && <p>Unable to make a post at this time</p>}
     </form>
+    </>
   );
 };
 
