@@ -66,14 +66,6 @@ export const getTopics = () => {
   });
 };
 
-export const getArticlesByTopic = (topic) => {
-  return api
-    .get("/articles", {
-      params: {
-        topic,
-      },
-    })
-    .then((response) => {
-      return response.data.articles;
-    });
+export const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`);
 };
