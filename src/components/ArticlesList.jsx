@@ -1,14 +1,21 @@
+import { useState, useEffect } from "react";
 import ArticleListCard from "./ArticleListCard";
 import { getArticles } from "./utils/utils";
-import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import TopicSearch from "./TopicSearch";
 
 const ArticleList = () => {
-  const [articles, setArticles] = useState("");
+  const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState("");
 
+  const location = useLocation();
 
   useEffect(() => {
+    setIsLoading(true);
+    setIsError(false);
+
     getArticles()
       .then((data) => {
         setArticles(data);
@@ -19,6 +26,20 @@ const ArticleList = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const topicFromQuery = queryParams.get("topic");
+    setSelectedTopic(topicFromQuery || "");
+  }, [location]);
+
+  const handleTopicChange = (selectedTopic) => {
+    setSelectedTopic(selectedTopic);
+  };
+
+  const filteredArticles = selectedTopic
+    ? articles.filter((article) => article.topic === selectedTopic)
+    : articles;
+
   if (isError) {
     return <p>Failed to load Articles</p>;
   } else if (isLoading) {
@@ -27,7 +48,8 @@ const ArticleList = () => {
     return (
       <main className="article-list">
         <h2>ARTICLE LIST</h2>
-        {articles.map((article) => (
+        <TopicSearch onChange={handleTopicChange} />
+        {filteredArticles.map((article) => (
           <ArticleListCard key={article.article_id} article={article}></ArticleListCard>
         ))}
       </main>
