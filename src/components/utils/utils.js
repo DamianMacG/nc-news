@@ -55,7 +55,6 @@ export const postComment = (article_id, comment) => {
       return response.data.comment;
     })
     .catch((error) => {
-      console.error("Failed to post comment:", error.response);
       throw error;
     });
 };

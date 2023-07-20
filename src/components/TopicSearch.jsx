@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTopics } from "./utils/utils";
 import { useNavigate, useLocation } from "react-router-dom";
+import Error from "./ErrorPage";
 
 const TopicSearch = ({ onChange }) => {
   const [topics, setTopics] = useState([]);
@@ -10,21 +11,26 @@ const TopicSearch = ({ onChange }) => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
 
-    getTopics()
-      .then((topics) => {
-        setTopics(topics);
-        setIsLoading(false);
-      })
-      .catch((error) => {
+    getTopics().then((topicsData) => {
+      setTopics(topicsData);
+      setIsLoading(false);
+      const queryParams = new URLSearchParams(location.search);
+      const topicFromQuery = queryParams.get("topic");
+      setSelectedTopic(topicFromQuery || "");
+
+      if (
+        topicFromQuery &&
+        !topicsData.some((topic) => topic.slug === topicFromQuery)
+      ) {
         setIsError(true);
         setIsLoading(false);
-      });
-  }, []);
+      }
+    });
+  }, [location]);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -42,9 +48,15 @@ const TopicSearch = ({ onChange }) => {
   if (isLoading) {
     return <p>Loading topics...</p>;
   }
-
   if (isError) {
-    return <p>Error occurred while fetching topics.</p>;
+    return (
+      <Error
+        errorStatus={404}
+        errorMessage={
+          "Topic not found: it seems this Topic does not exist yet!"
+        }
+      />
+    );
   }
 
   return (

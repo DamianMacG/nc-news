@@ -6,6 +6,7 @@ import CommentList from "../src/components/CommentList";
 import { patchArticle } from "../src/components/utils/utils";
 import AddComment from "../src/components/AddComment";
 import "../src/App.css"
+import Error from "../src/components/ErrorPage";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -58,7 +59,10 @@ const ArticlePage = () => {
   }, [article_id]);
 
   if (isError) {
-    return <p>Failed to load Articles</p>;
+    return <Error
+    errorStatus={404}
+    errorMessage={"Article not found: The requested article does not exist"}
+  />
   } else if (isLoading) {
     return <p>Loading...</p>;
   }
