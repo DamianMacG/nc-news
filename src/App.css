@@ -28,6 +28,11 @@ body {
   margin: 10px;
 }
 
+a {
+  text-decoration: none;
+}
+
+
 .article-list-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -74,7 +79,7 @@ ul {
 }
 .navbar {
   background-color: rgb(32, 42, 68);
-  padding: 15px 20px; /* Adjust padding to make it thicker */
+  padding: 15px 20px; 
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -102,11 +107,11 @@ ul {
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 5px;
-  font-weight: bold; /* Make the link text thicker */
+  font-weight: bold;
 }
 
 .navbar a:hover {
-  background-color: #ff1493; /* Use a more vibrant color on hover */
+  background-color: #ff1493; 
 }
 
 .comment-card {
@@ -234,26 +239,59 @@ ul {
 }
 
 .topic label {
-  font-size: 16px; /* Increase font size for the label */
+  font-size: 16px; 
   font-weight: bold;
 }
 
 .topic {
-  font-size: 14px; /* Increase font size for the select box */
-  padding: 8px; /* Increase padding for the select box */
+  font-size: 14px;
+  padding: 8px; 
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 200px;
 }
 
-/* Add a hover effect for the select box */
+
 .topic:hover {
-  border-color: #007bff; /* Blue color on hover */
+  border-color: #007bff;
 }
 
-/* Add a focus effect for the select box */
+
 .topic:focus {
   outline: none;
-  border-color: #007bff; /* Blue color on focus */
+  border-color: #007bff;
 }
 
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a2e;
+  color: #f2f2f2;
+  font-family: "Poppins", sans-serif; 
+}
+
+.welcome-heading {
+  font-size: 6rem;
+  margin-bottom: 2rem;
+}
+.welcome-heading2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.enter-button {
+  padding: 2rem 4rem;
+  font-size: 2rem; 
+  background-color: #007bff; 
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.enter-button:hover {
+  background-color: #ff1493; 
+}

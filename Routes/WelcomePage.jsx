@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
+import "../src/App.css";
 
 const WelcomePage = () => {
   return (
-    <div>
-      <h1>Welcome to My Website!</h1>
+    <div className="welcome-container">
+      <h1 className="welcome-heading">Welcome to The Jungle!</h1>
+      <h2 className="welcome-heading2">Get invloved.</h2>
       <Link to="/articles">
-        <button>ENTER</button>
+        <button className="enter-button">ENTER</button>
       </Link>
     </div>
   );
