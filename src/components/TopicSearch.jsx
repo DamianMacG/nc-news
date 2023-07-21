@@ -65,6 +65,7 @@ const TopicSearch = ({ onChange }) => {
       <select
         id="topic"
         name="topic"
+        className="topic"
         value={selectedTopic}
         onChange={handleChange}
       >

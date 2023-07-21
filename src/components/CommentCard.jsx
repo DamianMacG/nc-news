@@ -14,7 +14,7 @@ const CommentCard = ({ comment, onDeleteComment, isCommentPosted, loggedInUserId
         Posted by {comment.author} on {formattedDate}
       </p>
       {comment.author === loggedInUserId && (
-        <button onClick={handleDelete} disabled={isCommentPosted || isDeleting}>
+        <button className="comment-button" onClick={handleDelete} disabled={isCommentPosted || isDeleting}>
           Delete
         </button>
       )}
