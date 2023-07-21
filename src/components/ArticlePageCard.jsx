@@ -13,15 +13,14 @@ const ArticlePageCard = ({
     <>
       <section className="article-page-card">
         <h2>{article.title}</h2>
-        <p>Topic: {article.topic}</p>
-        <p>Author: {article.author}</p>
-        <p>Created At: {formattedDate}</p>
+        <p>Posted in {article.topic}, by {article.author}</p>
+        <p>on {formattedDate}</p>
         <img width="250px" src={article.article_img_url} alt={article.title} />
         <p>{article.body}</p>
         <p>Comment Count: {article.comment_count}</p>
         <p>Votes: {currentVoteCount}</p>
-        <button onClick={handleVoteUp}>Up Vote</button>
-        <button onClick={handleVoteDown}>Down Vote</button>
+        <button className="vote-button upvote" onClick={handleVoteUp}>Up Vote</button>
+        <button className="vote-button downvote" onClick={handleVoteDown}>Down Vote</button>
         {voteError && <p>Unable to vote at this moment</p>}
       </section>
     </>

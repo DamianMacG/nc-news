@@ -4,6 +4,7 @@
   padding: 2rem;
   text-align: center;
   padding-top: 80px;
+  font-family: "Poppins", sans-serif;
 }
 body {
   margin: 0;
@@ -11,29 +12,69 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  /* background-color: rgb(32, 42, 68);
-  color: white; */
+  background-color: #1a1a2e;
+  color: #f2f2f2;
 }
 
 .article-list-card {
-  border: 1px solid black;
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  text-align: left;
+  max-width: 600px;
   margin: 10px;
-  padding: 10px;
+}
+
+.article-list-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.article-list-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.article-list-card p {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.article-list-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.article-list-card a {
+  text-decoration: none;
+  color: #333;
+}
+
+.article-list-card a:hover {
+  text-decoration: underline;
 }
 
 .article-page-card {
   border: 1px solid black;
   border-radius: 10px;
   padding: 30px;
+  background-color: #f2f2f2;
+  color: black;
 }
 
 ul {
   list-style: none;
 }
 .navbar {
-  background-color: #f2f2f2;
-  padding: 10px;
+  background-color: rgb(32, 42, 68);
+  padding: 15px 20px; /* Adjust padding to make it thicker */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -44,6 +85,29 @@ ul {
   z-index: 9999;
 }
 
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin-right: 10px;
+}
+
+.navbar a {
+  color: #f2f2f2;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold; /* Make the link text thicker */
+}
+
+.navbar a:hover {
+  background-color: #ff1493; /* Use a more vibrant color on hover */
+}
 
 .comment-card {
   border: 1px solid black;
@@ -55,6 +119,22 @@ ul {
   max-height: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  background-color: #f2f2f2;
+  color: black;
+}
+.comment-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  max-width: 100px;
+  transition: background-color 0.2s;
+}
+
+.comment-button:hover {
+  background-color: #c82333;
 }
 
 .comment-form {
@@ -66,7 +146,6 @@ ul {
   padding: 30px;
   max-width: 500px;
   margin: 0 auto;
-  
 }
 
 .comment-form textarea {
@@ -77,8 +156,7 @@ ul {
   width: 100%;
   box-sizing: border-box;
   height: 100px;
-  resize: none; /* Prevents resizing */
-  
+  resize: none;
 }
 
 .comment-form label {
@@ -98,4 +176,83 @@ ul {
 
 .comment-form button:hover {
   background-color: #0056b3;
+}
+
+.article-page-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article-page-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.article-page-card p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.article-page-card img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.vote-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.vote-button:hover {
+  background-color: #0056b3;
+}
+
+.vote-button.upvote:hover {
+  background-color: rgb(0, 179, 0);
+}
+
+.vote-button.downvote:hover {
+  background-color: rgb(211, 0, 0);
+}
+
+.search-box {
+  margin-bottom: 20px;
+}
+
+.topic label {
+  font-size: 16px; /* Increase font size for the label */
+  font-weight: bold;
+}
+
+.topic {
+  font-size: 14px; /* Increase font size for the select box */
+  padding: 8px; /* Increase padding for the select box */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+
+/* Add a hover effect for the select box */
+.topic:hover {
+  border-color: #007bff; /* Blue color on hover */
+}
+
+/* Add a focus effect for the select box */
+.topic:focus {
+  outline: none;
+  border-color: #007bff; /* Blue color on focus */
 }
