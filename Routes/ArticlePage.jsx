@@ -16,7 +16,7 @@ const ArticlePage = () => {
   const [currentVoteCount, setCurrentVoteCount] = useState(0);
   const [voteError, setVoteError] = useState(false);
   const [comments, setComments] = useState([]);
-  const [isCommentPosted, setIsCommentPosted] = useState(false);
+  const [userVote, setUserVote] = useState(null);
 
   const updateCommentCount = (newComment) => {
     setArticle((prevArticle) => ({
@@ -33,29 +33,67 @@ const ArticlePage = () => {
   };
 
   const handleVoteUp = () => {
-    setCurrentVoteCount((prevCount) => prevCount + 1);
-    setVoteError(false);
-    patchArticle(article_id, 1)
-      .then((updatedArticle) => {
-        setCurrentVoteCount(updatedArticle.votes);
-      })
-      .catch((err) => {
-        setVoteError(true);
-        setCurrentVoteCount((prevCount) => prevCount - 1);
-      });
+    if (userVote === "up") {
+      setUserVote(null);
+      patchArticle(article_id, -1)
+        .then((updatedArticle) => {
+          setCurrentVoteCount((prevCount) => prevCount - 1);
+        })
+        .catch((err) => {
+          setVoteError(true);
+          setCurrentVoteCount((prevCount) => prevCount + 1);
+        });
+    } else if (userVote === "down") {
+      setUserVote("up");
+      patchArticle(article_id, 2)
+        .then((updatedArticle) => {
+          setCurrentVoteCount((prevCount) => prevCount + 2);
+        })
+        .catch((err) => {
+          setVoteError(true);
+        });
+    } else {
+      setUserVote("up");
+      patchArticle(article_id, 1)
+        .then((updatedArticle) => {
+          setCurrentVoteCount((prevCount) => prevCount + 1);
+        })
+        .catch((err) => {
+          setVoteError(true);
+        });
+    }
   };
 
   const handleVoteDown = () => {
-    setCurrentVoteCount((prevCount) => prevCount - 1);
-    setVoteError(false);
-    patchArticle(article_id, -1)
-      .then((updatedArticle) => {
-        setCurrentVoteCount(updatedArticle.votes);
-      })
-      .catch((err) => {
-        setVoteError(true);
-        setCurrentVoteCount((prevCount) => prevCount + 1);
-      });
+    if (userVote === "down") {
+      setUserVote(null);
+      patchArticle(article_id, 1)
+        .then((updatedArticle) => {
+          setCurrentVoteCount((prevCount) => prevCount + 1);
+        })
+        .catch((err) => {
+          setVoteError(true);
+          setCurrentVoteCount((prevCount) => prevCount - 1);
+        });
+    } else if (userVote === "up") {
+      setUserVote("down");
+      patchArticle(article_id, -2)
+        .then((updatedArticle) => {
+          setCurrentVoteCount((prevCount) => prevCount - 2);
+        })
+        .catch((err) => {
+          setVoteError(true);
+        });
+    } else {
+      setUserVote("down");
+      patchArticle(article_id, -1)
+        .then((updatedArticle) => {
+          setCurrentVoteCount((prevCount) => prevCount - 1);
+        })
+        .catch((err) => {
+          setVoteError(true);
+        });
+    }
   };
 
   useEffect(() => {
@@ -88,12 +126,12 @@ const ArticlePage = () => {
         handleVoteDown={handleVoteDown}
         currentVoteCount={currentVoteCount}
         voteError={voteError}
+        userVote={userVote}
       />
       <AddComment
         article_id={article_id}
         setComments={setComments}
         updateCommentCount={updateCommentCount}
-        isCommentPosted={isCommentPosted}
       />
       <CommentList
         article_id={article.article_id}

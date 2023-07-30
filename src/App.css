@@ -233,7 +233,13 @@ ul {
   background-color: rgb(211, 0, 0);
 }
 
+.vote-button.upvote.voted {
+  background-color: green;
+}
 
+.vote-button.downvote.voted {
+  background-color: darkred;
+}
 
 .search-box {
   display: flex;
