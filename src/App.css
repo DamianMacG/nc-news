@@ -233,53 +233,76 @@ ul {
   background-color: rgb(211, 0, 0);
 }
 
+
+
 .search-box {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 }
 
-.topic label {
+.search-box label {
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
-.topic {
+.search-box select {
   font-size: 14px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 200px;
+  margin-top: 5px;
 }
 
-.topic:hover {
+.search-box select:hover {
   border-color: #007bff;
 }
 
-.topic:focus {
+.search-box select:focus {
   outline: none;
   border-color: #007bff;
+}
+
+.search-box select option {
+  font-size: 14px;
+}
+
+.sort-by {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 }
 
 .sort-by label {
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
-.sort-by {
+.sort-by select {
   font-size: 14px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 200px;
-  margin: 20px;
+  margin-top: 5px;
 }
 
-.sort-by:hover {
+.sort-by select:hover {
   border-color: #007bff;
 }
 
-.sort-by:focus {
+.sort-by select:focus {
   outline: none;
   border-color: #007bff;
+}
+
+.sort-by select option {
+  font-size: 14px;
 }
 
 .welcome-container {

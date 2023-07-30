@@ -14,7 +14,7 @@ const ArticleList = () => {
   const [selectedSort, setSelectedSort] = useState("created_at");
 
   const location = useLocation();
-  const navigate = useNavigate(); // Add this line to import useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,20 +43,16 @@ const ArticleList = () => {
 
   const handleTopicChange = (selectedTopic) => {
     setSelectedTopic(selectedTopic);
-
-    // Update the URL with the new selected topic
     const queryParams = new URLSearchParams(location.search);
     queryParams.set("topic", selectedTopic);
-    navigate({ search: queryParams.toString() }); // Use navigate instead of history.push
+    navigate({ search: queryParams.toString() }); 
   };
 
   const handleSortChange = (selectedSort) => {
     setSelectedSort(selectedSort);
-
-    // Update the URL with the new selected sort option
     const queryParams = new URLSearchParams(location.search);
     queryParams.set("sort_by", selectedSort);
-    navigate({ search: queryParams.toString() }); // Use navigate instead of history.push
+    navigate({ search: queryParams.toString() });
   };
 
   const filteredArticles = selectedTopic
