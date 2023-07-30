@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getArticleById } from "../src/components/utils/utils";
 import ArticlePageCard from "../src/components/ArticlePageCard";
 import CommentList from "../src/components/CommentList";
 import { patchArticle } from "../src/components/utils/utils";
 import AddComment from "../src/components/AddComment";
-import "../src/App.css"
+import "../src/App.css";
+import { useParams } from "react-router-dom";
 import Error from "../src/components/ErrorPage";
 
 const ArticlePage = () => {
@@ -16,7 +16,21 @@ const ArticlePage = () => {
   const [currentVoteCount, setCurrentVoteCount] = useState(0);
   const [voteError, setVoteError] = useState(false);
   const [comments, setComments] = useState([]);
-  
+  const [isCommentPosted, setIsCommentPosted] = useState(false);
+
+  const updateCommentCount = (newComment) => {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      comment_count: prevArticle.comment_count + 1,
+    }));
+  };
+
+  const updateCommentCountAfterDelete = () => {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      comment_count: prevArticle.comment_count - 1,
+    }));
+  };
 
   const handleVoteUp = () => {
     setCurrentVoteCount((prevCount) => prevCount + 1);
@@ -44,8 +58,6 @@ const ArticlePage = () => {
       });
   };
 
-  
-
   useEffect(() => {
     getArticleById(article_id)
       .then((data) => {
@@ -59,10 +71,12 @@ const ArticlePage = () => {
   }, [article_id]);
 
   if (isError) {
-    return <Error
-    errorStatus={404}
-    errorMessage={"Article not found: The requested article does not exist"}
-  />
+    return (
+      <Error
+        errorStatus={404}
+        errorMessage={"Article not found: The requested article does not exist"}
+      />
+    );
   } else if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -75,14 +89,20 @@ const ArticlePage = () => {
         currentVoteCount={currentVoteCount}
         voteError={voteError}
       />
-      <AddComment article_id={article_id} setComments={setComments} />
+      <AddComment
+        article_id={article_id}
+        setComments={setComments}
+        updateCommentCount={updateCommentCount}
+        isCommentPosted={isCommentPosted}
+      />
       <CommentList
         article_id={article.article_id}
         comments={comments}
         setComments={setComments}
+        updateCommentCountAfterDelete={updateCommentCountAfterDelete}
       />
-      
     </main>
   );
 };
+
 export default ArticlePage;
