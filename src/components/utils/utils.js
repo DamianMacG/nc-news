@@ -4,10 +4,11 @@ const api = axios.create({
   baseURL: "https://reddit-style-backend-nc.onrender.com/api",
 });
 
-export const getArticles = (limit = 40, page = 1) => {
+export const getArticles = (sort_by = "created_at", limit = 40, page = 1) => {
   return api
     .get("/articles", {
       params: {
+        sort_by,
         limit,
         p: page,
       },
