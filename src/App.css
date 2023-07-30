@@ -32,7 +32,6 @@ a {
   text-decoration: none;
 }
 
-
 .article-list-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -79,7 +78,7 @@ ul {
 }
 .navbar {
   background-color: rgb(32, 42, 68);
-  padding: 15px 20px; 
+  padding: 15px 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -111,7 +110,7 @@ ul {
 }
 
 .navbar a:hover {
-  background-color: #ff1493; 
+  background-color: #ff1493;
 }
 
 .comment-card {
@@ -234,32 +233,76 @@ ul {
   background-color: rgb(211, 0, 0);
 }
 
+
+
 .search-box {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
 }
 
-.topic label {
-  font-size: 16px; 
+.search-box label {
+  font-size: 16px;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
-.topic {
+.search-box select {
   font-size: 14px;
-  padding: 8px; 
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 200px;
+  margin-top: 5px;
 }
 
-
-.topic:hover {
+.search-box select:hover {
   border-color: #007bff;
 }
 
-
-.topic:focus {
+.search-box select:focus {
   outline: none;
   border-color: #007bff;
+}
+
+.search-box select option {
+  font-size: 14px;
+}
+
+.sort-by {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.sort-by label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.sort-by select {
+  font-size: 14px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 5px;
+}
+
+.sort-by select:hover {
+  border-color: #007bff;
+}
+
+.sort-by select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.sort-by select option {
+  font-size: 14px;
 }
 
 .welcome-container {
@@ -269,7 +312,7 @@ ul {
   justify-content: center;
   background-color: #1a1a2e;
   color: #f2f2f2;
-  font-family: "Poppins", sans-serif; 
+  font-family: "Poppins", sans-serif;
 }
 
 .welcome-heading {
@@ -283,8 +326,8 @@ ul {
 
 .enter-button {
   padding: 2rem 4rem;
-  font-size: 2rem; 
-  background-color: #007bff; 
+  font-size: 2rem;
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -293,5 +336,5 @@ ul {
 }
 
 .enter-button:hover {
-  background-color: #ff1493; 
+  background-color: #ff1493;
 }
