@@ -8,6 +8,7 @@ const CommentList = ({
   comments,
   setComments,
   isCommentPosted,
+  updateCommentCountAfterDelete,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -16,6 +17,7 @@ const CommentList = ({
 
   const loggedInUserId = "grumpy19";
 
+ 
   const handleDeleteComment = (comment_id) => {
     setIsDeletingComment(true);
     deleteComment(comment_id)
@@ -24,6 +26,7 @@ const CommentList = ({
           prevComments.filter((comment) => comment.comment_id !== comment_id)
         );
         setIsDeletingComment(false);
+        updateCommentCountAfterDelete();
       })
       .catch((err) => {
         setDeleteError(true);
