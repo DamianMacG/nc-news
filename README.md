@@ -2,13 +2,7 @@
 
 Project Overview:
 
-This project is a full-stack web application that allows users to browse a list of articles, filter articles by topics, view individual pages for each article, vote on articles, post comments on articles, and delete their own comments. Future features to be added.
-
-Technology Stack:
-
-Front-end: React.js, React Router, Axios, and CSS for styling.
-Back-end: Node.js, Express.js, and PostgreSQL for the database.
-API: RESTful API with endpoints for retrieving articles, topics, comments, posting comments, voting, and deleting comments.
+This project is a full-stack web application that allows users to browse a list of articles, filter articles by topics, comment count, votes and newly posted, view individual pages for each article, vote on articles, post comments on articles, and delete their own comments. Future features to be added.
 
 
 # Deployed Version
@@ -17,6 +11,13 @@ A hosted version of the project can be found at the link below.
 You can try it out by visiting the website and exploring its features.
 
 https://luminous-druid-1cc7bd.netlify.app/
+
+
+Technology Stack:
+
+Front-end: React.js, React Router, Axios, and CSS for styling.
+Back-end: Node.js, Express.js, and PostgreSQL for the database.
+API: RESTful API with endpoints for retrieving articles, topics, comments, posting comments, voting, and deleting comments.
 
 
 # Backend Repository
