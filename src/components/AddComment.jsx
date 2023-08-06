@@ -19,7 +19,6 @@ const AddComment = ({ article_id, setComments, updateCommentCount }) => {
           setIsCommentPosted(true);
           setComment("");
           setComments((prevComments) => [newComment, ...prevComments]);
-          // Call the updateCommentCount function to increment the comment count
           updateCommentCount(newComment);
         })
         .catch((err) => {
@@ -46,7 +45,7 @@ const AddComment = ({ article_id, setComments, updateCommentCount }) => {
           placeholder="Enter your comment..."
           required
         ></textarea>
-        <button type="submit" disabled={isCommentPosted || isSubmitting}>
+        <button type="submit" disabled={isCommentPosted || isSubmitting} id="delete-button">
           {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </form>
