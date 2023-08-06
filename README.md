@@ -6,8 +6,8 @@ This project is a full-stack web application that allows users to browse a list 
 
 Technology Stack:
 
-Front-end: React.js, React Router, Axios, and CSS for styling.
-Back-end: Node.js, Express.js, and PostgreSQL for the database.
+Front-end: React.js, React Router, Axios, Cypress, CSS for styling.
+Back-end: Node.js, Express.js, PostgreSQL for the database, Jest and Supertest.
 API: RESTful API with endpoints for retrieving articles, topics, comments, posting comments, voting, and deleting comments.
 
 
