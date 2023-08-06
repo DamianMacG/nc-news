@@ -10,7 +10,7 @@ const CommentCard = ({ comment, onDeleteComment, isCommentPosted, loggedInUserId
   return (
     <section key={comment.comment_id} className="comment-card">
       <p>{comment.body}</p>
-      <p>
+      <p className="comment-body">
         Posted by {comment.author} on {formattedDate}
       </p>
       {comment.author === loggedInUserId && (
