@@ -48,5 +48,5 @@ Open your web browser and navigate to http://localhost:5173 to access the local 
 
 The minimum version required for running this project are:
 
-Node.js: v12 or higher
+Node.js: v14 or higher
 
