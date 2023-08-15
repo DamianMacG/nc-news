@@ -14,7 +14,7 @@ API: RESTful API with endpoints for retrieving articles, topics, comments, posti
 # Deployed Version
 
 A hosted version of the project can be found at the link below. 
-You can try it out by visiting the website and exploring its features.
+You can try it out by visiting the website and exploring its features. As I am using a render free tier it may take a moment to load.
 
 https://luminous-druid-1cc7bd.netlify.app/
 
