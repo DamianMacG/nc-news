@@ -67,7 +67,12 @@ const ArticleList = () => {
       />
     );
   } else if (isLoading) {
-    return <p>Loading...</p>;
+      return (
+    <>
+      <h2>Loading...</h2>
+      <p>Apologies, this will just take uno momento.</p>
+    </>
+  );
   } else
     return (
       <main className="article-list">
